@@ -38,6 +38,20 @@ function draw() {
     drawPage1();
   } else if (page === 2) {
     drawPage2();
+  } 
+  // Moved quiz questions to seperate functions for better organization and readabiliy
+  else if (page === 3) {
+    drawPage3();
+  } else if (page === 4) {
+    drawPage4();
+  } else if (page === 5) {
+    drawPage5();
+  } else if (page === 6) {
+    drawPage6();
+  } else if (page === 7) {
+    drawPage7();
+  } else if (page === 8) {
+    drawPage8();
   }
 }
 
@@ -86,29 +100,24 @@ function drawPage1() {
 function drawPage2() {
   background("#F3EAE5");
 
-  // This allows all text to move together
   let yOffset = 60;
 
-  // Bottom rectangle
   fill("#796159");
   noStroke();
   rect(0, height - 100, width, 100);
 
-  // Header
   textAlign(LEFT, CENTER);
   textFont(brandFont2);
   textSize(30);
   fill("#796159");
-  text("Before You Begin", 150, 100 + yOffset);
+  text("Before You Begin", 380, 100 + yOffset);
 
-  // Sub Header
   textAlign(LEFT, CENTER);
   textFont(brandFont1);
   textSize(40);
   fill("#796159");
-  text("What You'll Need", 150, 175 + yOffset);
+  text("What You'll Need", 380, 175 + yOffset);
 
-  // Body Text
   textAlign(LEFT, TOP);
   textFont(brandFont2);
   textSize(24);
@@ -116,10 +125,41 @@ function drawPage2() {
 
   text(
     "Before you begin the quiz, grab a notebook and a pencil, this will be a key interactive element to help you engage with your results. As you navigate through the quiz, keep a running tally for each answer. Be sure to track each radiance type separately: Outer Glow, Inner Softness, and Vital Flow. At the end of the quiz, you’ll receive instructions on how to calculate your final result and discover your radiance type.",
-    150,
+    380,
     245 + yOffset,
     680,
   );
+}
+
+// Page 3
+function drawPage3() {
+  background("#F3EAE5");
+
+  let yOffset = 60;
+ 
+  // Question 1
+  textAlign(LEFT, CENTER);
+  textFont(brandFont1);
+  textSize(40);
+  fill("#796159");
+  text("You’ve just arrived — where do you wander first?", 270, 100 + yOffset);
+}
+
+// Placeholder pages for quiz questions (Pages 3-8)
+function drawPage4() { background("#F3EAE5"); }
+function drawPage5() { background("#F3EAE5"); }
+function drawPage6() { background("#F3EAE5"); }
+function drawPage7() { background("#F3EAE5"); }
+function drawPage8() { background("#F3EAE5"); }
+
+// KEY PRESS FUNCTION (when pressed spacebar, moves to next page)
+function keyPressed() {
+  if (key === ' ') {
+    if (page >= 2 && page < 8) {
+      page++;
+    }
+    return false;
+  }
 }
 
 function windowResized() {
