@@ -28,12 +28,12 @@ function setup() {
 
   startBtn.mousePressed(() => {
     startBtn.hide();
-    page = 2; // ✅ FIXED (was 3)
+    page = 2; // change to instructions page
 
-    // Card setup (kept exactly the same)
+    // Card setup 
     cards = [
       createCard(270, 200,
-        "The getting-ready room",
+        "The personalized beauty boutique",
         "Find your Outer Glow"
       ),
       createCard(270, 350,
@@ -148,26 +148,32 @@ function drawPage3() {
   fill("#796159");
   text("You’ve just arrived — where do you wander first?", 270, 100 + yOffset);
 
-  for (let c of cards) {
-    drawCard(c);
-  }
+  let cardOffsetY = 70; // adjust this number if you want to move flip cards down from text together 
+
+for (let c of cards) {
+  push();
+  translate(0, cardOffsetY);
+  drawCard(c);
+  pop();
 }
+  }
+
 
 // Draw cards
 function drawCard(c) {
   push();
   translate(c.x, c.y);
 
-  fill(c.flipped ? "#78615a" : "#ddbdb6");
+  fill(c.flipped ? "#78615A" : "#DDBDB6");
   noStroke();
   rect(0, 0, 816, 125, 30);
 
-  textAlign(CENTER, CENTER);
+  textAlign(LEFT, CENTER);
   textFont(brandFont2);
   textSize(28);
-  fill(c.flipped ? "#f3eae5" : "#796159");
+  fill(c.flipped ? "#F3EAE5" : "#796159");
 
-  text(c.flipped ? c.back : c.front, 408, 62.5);
+  text(c.flipped ? c.back : c.front, 60, 62.5);
 
   pop();
 }
@@ -199,11 +205,16 @@ function mousePressed() {
   }
 }
 
-// ✅ FIXED SPACEBAR (ONLY 2 → 3)
+//spacebar to reset flip cards on page 3 (and move to page 4)
 function keyPressed() {
   if (key === ' ') {
     if (page === 2) {
       page = 3;
+
+      // Reset flipped state of cards when moving to page 3
+      for (let c of cards) {
+        c.flipped = false;
+      }
     }
     return false;
   }
