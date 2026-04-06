@@ -144,7 +144,7 @@ function drawPage3() {
 
   textAlign(LEFT, CENTER);
   textFont(brandFont1);
-  textSize(40);
+  textSize(35);
   fill("#796159");
   text("You’ve just arrived — where do you wander first?", 270, 100 + yOffset);
 
@@ -156,8 +156,112 @@ for (let c of cards) {
   drawCard(c);
   pop();
 }
-  }
+}
 
+function drawPage4() {
+  background("#F3EAE5");
+
+  let yOffset = 60;
+
+  textAlign(LEFT, CENTER);
+  textFont(brandFont1);
+  textSize(35);
+  fill("#796159");
+  text("You find a welcome gift waiting for you...", 270, 100 + yOffset);
+
+  let cardOffsetY = 70;
+
+  for (let c of cards) {
+    push();
+    translate(0, cardOffsetY);
+    drawCard(c);
+    pop();
+  }
+}
+
+function drawPage5() {
+  background("#F3EAE5");
+
+  let yOffset = 60;
+
+  textAlign(LEFT, CENTER);
+  textFont(brandFont1);
+  textSize(35);
+  fill("#796159");
+  text("You have an hour with no schedule, what will you do?", 270, 100 + yOffset);
+
+  let cardOffsetY = 70;
+
+  for (let c of cards) {
+    push();
+    translate(0, cardOffsetY);
+    drawCard(c);
+    pop();
+  }
+}
+
+function drawPage6() {
+  background("#F3EAE5");
+
+  let yOffset = 60;
+
+  textAlign(LEFT, CENTER);
+  textFont(brandFont1);
+  textSize(35);
+  fill("#796159");
+  text("You enjoy a poolside movie night with the girls", 270, 100 + yOffset);
+
+  let cardOffsetY = 70;
+
+  for (let c of cards) {
+    push();
+    translate(0, cardOffsetY);
+    drawCard(c);
+    pop();
+  }
+}
+
+function drawPage7() {
+  background("#F3EAE5");
+
+  let yOffset = 60;
+
+  textAlign(LEFT, CENTER);
+  textFont(brandFont1);
+  textSize(35);
+  fill("#796159");
+  text("You enjoy a morning drink on the patio, what do you choose?", 270, 100 + yOffset);
+
+  let cardOffsetY = 70;
+
+  for (let c of cards) {
+    push();
+    translate(0, cardOffsetY);
+    drawCard(c);
+    pop();
+  }
+}
+
+function drawPage8() {
+  background("#F3EAE5");
+
+  let yOffset = 60;
+
+  textAlign(LEFT, CENTER);
+  textFont(brandFont1);
+  textSize(35);
+  fill("#796159");
+  text("What does your closet look like lately?", 270, 100 + yOffset);
+
+  let cardOffsetY = 70;
+
+  for (let c of cards) {
+    push();
+    translate(0, cardOffsetY);
+    drawCard(c);
+    pop();
+  }
+}
 
 // Draw cards
 function drawCard(c) {
@@ -205,17 +309,129 @@ function mousePressed() {
   }
 }
 
-//spacebar to reset flip cards on page 3 (and move to page 4)
+//spacebar to reset flip cards and move to next page
 function keyPressed() {
   if (key === ' ') {
     if (page === 2) {
       page = 3;
 
-      // Reset flipped state of cards when moving to page 3
-      for (let c of cards) {
-        c.flipped = false;
-      }
+      // Page 3 cards (your original ones)
+      cards = [
+        createCard(270, 200,
+          "The personalized beauty boutique",
+          "Find your Outer Glow"
+        ),
+        createCard(270, 350,
+          "The spa for a relaxing pampering session",
+          "Find your Inner Softness"
+        ),
+        createCard(270, 500,
+          "The beach for a refreshing walk by the water",
+          "Find your Vital Flow"
+        )
+      ];
+
+    } else if (page === 3) {
+      page = 4;
+
+      // Page 4 cards
+      cards = [
+        createCard(270, 200,
+          "A designer makeup bag filled with your favorite products",
+          "Find your Outer Glow"
+        ),
+        createCard(270, 350,
+          "An esthetician curated skin care set",
+          "Find your Inner Softness"
+        ),
+        createCard(270, 500,
+          "A giftbox filled with juice shots and healthy snacks",
+          "Find your Vital Flow"
+        )
+      ];
+
+       } else if (page === 4) {
+      page = 5;
+
+      // Page 5 cards
+      cards = [
+        createCard(270, 200,
+          "You go shopping with some girls at the retreat boutique",
+          "Find your Outer Glow"
+        ),
+        createCard(270, 350,
+          " You go to the spa and get a mani pedi",
+          "Find your Inner Softness"
+        ),
+        createCard(270, 500,
+          " You join in on a quick group yoga session",
+          "Find your Vital Flow"
+        )
+      ];
+
+        } else if (page === 5) {
+      page = 6;
+
+      // Page 6 cards
+      cards = [
+        createCard(270, 200,
+          " You bring a blanket and make a cute little photo spot",
+          "Find your Outer Glow"
+        ),
+        createCard(270, 350,
+          " You watch while doing face masks with the girls",
+          "Find your Inner Softness"
+        ),
+        createCard(270, 500,
+          "You make healthy snacks and drinks for everyone",
+          "Find your Vital Flow"
+        )
+      ];
+
+        } else if (page === 6) {
+      page = 7;
+
+      // Page 7 cards
+      cards = [
+        createCard(270, 200,
+          "A snickerdoodle latte from the espresso bar",
+          "Find your Outer Glow"
+        ),
+        createCard(270, 350,
+          "A lavender matcha latte topped with rose petals",
+          "Find your Inner Softness"
+        ),
+        createCard(270, 500,
+          "A refreshing detox smoothie to cleanse your system",
+          "Find your Vital Flow"
+        )
+      ];
+
+        } else if (page === 7) {
+      page = 8;
+
+      // Page 8 cards
+      cards = [
+        createCard(270, 200,
+          "Fun pieces filled with unique designs and patterns",
+          "Find your Outer Glow"
+        ),
+        createCard(270, 350,
+          " Matching sets and fun leisure wear",
+          "Find your Inner Softness"
+        ),
+        createCard(270, 500,
+          "Athletic or cute workout sets",
+          "Find your Vital Flow"
+        )
+      ];
     }
+
+    // Reset flips every time you change pages
+    for (let c of cards) {
+      c.flipped = false;
+    }
+
     return false;
   }
 }
@@ -228,10 +444,3 @@ function windowResized() {
     startBtn.position(width / 2 - 115, 95 + 245);
   }
 }
-
-// Pages 4–8 placeholders
-function drawPage4() { background("#F3EAE5"); }
-function drawPage5() { background("#F3EAE5"); }
-function drawPage6() { background("#F3EAE5"); }
-function drawPage7() { background("#F3EAE5"); }
-function drawPage8() { background("#F3EAE5"); }
