@@ -2,8 +2,10 @@ let brandFont1; // Rosarivo
 let brandFont2; // Radley
 let ampImg; // BB_logo.png
 let cards = []; // quiz cards
-
-let startBtn;
+let startBtn; // start quiz button
+let outerBtn; // outer glow button
+let innerBtn; // inner softness button
+let vitalBtn; // vital flow button
 let page = 1; // 1 = start page
 
 function preload() {
@@ -25,6 +27,61 @@ function setup() {
   startBtn.style("border", "none");
   startBtn.style("border-radius", "30px");
   startBtn.style("padding", "24px 39px");
+
+   outerBtn = createButton("Outer Glow");
+  innerBtn = createButton("Inner Softness");
+  vitalBtn = createButton("Vital Flow");
+
+  function styleResultButton(btn) {
+    btn.style("background-color", "#DDBDB6");
+    btn.style("color", "#78615A");
+    btn.style("font-family", "Radley");
+    btn.style("font-size", "30px");
+    btn.style("border", "none");
+    btn.style("border-radius", "25px");
+  }
+
+  // style result buttons
+  styleResultButton(outerBtn);
+  styleResultButton(innerBtn);
+  styleResultButton(vitalBtn);
+
+  // make all buttons same size
+let btnWidth = 260;
+let btnHeight = 80;
+
+outerBtn.style("width", btnWidth + "px");
+innerBtn.style("width", btnWidth + "px");
+vitalBtn.style("width", btnWidth + "px");
+
+outerBtn.style("height", btnHeight + "px");
+innerBtn.style("height", btnHeight + "px");
+vitalBtn.style("height", btnHeight + "px");
+
+// center text inside buttons
+outerBtn.style("text-align", "center");
+innerBtn.style("text-align", "center");
+vitalBtn.style("text-align", "center");
+
+// center text vertically
+outerBtn.style("line-height", btnHeight + "px");
+innerBtn.style("line-height", btnHeight + "px");
+vitalBtn.style("line-height", btnHeight + "px");
+
+  outerBtn.hide();
+  innerBtn.hide();
+  vitalBtn.hide();
+
+  // Result Button Interactions 
+  outerBtn.mousePressed(() => {
+    page = 10;
+  });
+  innerBtn.mousePressed(() => {
+    page = 11;
+  });
+  vitalBtn.mousePressed(() => {
+    page = 12;
+  });
 
   startBtn.mousePressed(() => {
     startBtn.hide();
@@ -67,7 +124,9 @@ function draw() {
     drawPage7();
   } else if (page === 8) {
     drawPage8();
-  }
+  } else if (page === 9) {
+  drawPage9();
+}
 }
 
 // Page 1: Start page
@@ -263,6 +322,50 @@ function drawPage8() {
   }
 }
 
+// Page 9: End Instructions 
+function drawPage9() {
+  background("#F3EAE5");
+
+  let yOffset = 20;
+
+  fill("#796159");
+  noStroke();
+  rect(0, height - 100, width, 100);
+
+  textAlign(LEFT, CENTER);
+  textFont(brandFont2);
+  textSize(30);
+  text("Time to Tally!", 400, 100 + yOffset);
+
+  textFont(brandFont1);
+  textSize(40);
+  text("Which type of radiance are you?", 400, 175 + yOffset);
+
+  textFont(brandFont2);
+  textSize(24);
+
+  text(
+    "Review your quiz answers and tally each radiance type separately: Outer Glow, Inner Softness, and Vital Flow. Once you’ve counted your totals, identify which type you selected most often. Finally, click on the radiance type with the highest tally to reveal your full results and learn more about your unique glow!",
+    400,
+    340 + yOffset,
+    620
+  );
+
+// show result buttons
+outerBtn.show();
+innerBtn.show();
+vitalBtn.show();
+
+// centered layout
+let y = 535; // vertical placement of buttons
+let gap = 300; // adjust spacing
+
+// center the whole group
+outerBtn.position(width / 2 - gap - 130, y);
+innerBtn.position(width / 2 - 130, y);
+vitalBtn.position(width / 2 + gap - 130, y);
+}
+
 // Draw cards
 function drawCard(c) {
   push();
@@ -425,7 +528,11 @@ function keyPressed() {
           "Find your Vital Flow"
         )
       ];
-    }
+
+    } else if (page === 8) {
+  page = 9;
+  cards = [];
+}
 
     // Reset flips every time you change pages
     for (let c of cards) {
