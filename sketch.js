@@ -125,7 +125,13 @@ function draw() {
   } else if (page === 8) {
     drawPage8();
   } else if (page === 9) {
-  drawPage9();
+    drawPage9();
+  } else if (page === 10) {
+    drawPage10();
+  } else if (page === 11) {
+    drawPage11();
+  } else if (page === 12) {
+   drawPage12();
 }
 }
 
@@ -364,6 +370,54 @@ let gap = 300; // adjust spacing
 outerBtn.position(width / 2 - gap - 130, y);
 innerBtn.position(width / 2 - 130, y);
 vitalBtn.position(width / 2 + gap - 130, y);
+}
+
+// Page 10: Outer Glow Results Page
+function drawPage10() {
+  background("#F3EAE5");
+
+  outerBtn.hide();
+  innerBtn.hide();
+  vitalBtn.hide();
+
+  textAlign(CENTER, CENTER);
+  textFont(brandFont1);
+  textSize(50);
+  fill("#796159");
+
+  text("Outer Glow", width / 2, height / 2);
+}
+
+// Page 11: Inner Softness Results Page
+function drawPage11() {
+  background("#F3EAE5");
+
+  outerBtn.hide();
+  innerBtn.hide();
+  vitalBtn.hide();
+
+  textAlign(CENTER, CENTER);
+  textFont(brandFont1);
+  textSize(50);
+  fill("#796159");
+
+  text("Inner Softness", width / 2, height / 2);
+}
+
+// Page 12: Vital Flow Results Page
+function drawPage12() {
+  background("#F3EAE5");
+
+  outerBtn.hide();
+  innerBtn.hide();
+  vitalBtn.hide();
+
+  textAlign(CENTER, CENTER);
+  textFont(brandFont1);
+  textSize(50);
+  fill("#796159");
+
+  text("Vital Flow", width / 2, height / 2);
 }
 
 // Draw cards
