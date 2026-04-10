@@ -1,25 +1,35 @@
+// fonts and image assets
 let brandFont1; // Rosarivo
 let brandFont2; // Radley
 let ampImg; // BB_logo.png
-let cards = []; // quiz cards
+
+// Quiz system
+let cards = []; // stores all quiz cards (answer choices)
+
+// Buttons
 let startBtn; // start quiz button
 let outerBtn; // outer glow button
 let innerBtn; // inner softness button
 let vitalBtn; // vital flow button
-let page = 1; // 1 = start page
 
+// Page system
+let page = 1; // controls which page is being shown (page 1)
+
+// load assets before sketch starts
 function preload() {
   brandFont1 = loadFont("Rosarivo-Regular.ttf");
   brandFont2 = loadFont("Radley-Regular.ttf");
   ampImg = loadImage("BB_logo.png");
 }
 
+// Runs once at start
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
+  // Start Quiz Button
   startBtn = createButton("Start Quiz");
 
-  // Button styling
+  // Start Quiz Button styling
   startBtn.style("background-color", "#DDBDB6");
   startBtn.style("color", "#78615A");
   startBtn.style("font-family", "Radley");
@@ -28,10 +38,12 @@ function setup() {
   startBtn.style("border-radius", "30px");
   startBtn.style("padding", "24px 39px");
 
-   outerBtn = createButton("Outer Glow");
+  // Result buttons
+  outerBtn = createButton("Outer Glow");
   innerBtn = createButton("Inner Softness");
   vitalBtn = createButton("Vital Flow");
 
+  // Reusable function to style result buttons
   function styleResultButton(btn) {
     btn.style("background-color", "#DDBDB6");
     btn.style("color", "#78615A");
@@ -47,27 +59,28 @@ function setup() {
   styleResultButton(vitalBtn);
 
   // make all buttons same size
-let btnWidth = 260;
-let btnHeight = 80;
+  let btnWidth = 260;
+  let btnHeight = 80;
 
-outerBtn.style("width", btnWidth + "px");
-innerBtn.style("width", btnWidth + "px");
-vitalBtn.style("width", btnWidth + "px");
+  // make all buttons equal size
+  outerBtn.style("width", btnWidth + "px");
+  innerBtn.style("width", btnWidth + "px");
+  vitalBtn.style("width", btnWidth + "px");
 
-outerBtn.style("height", btnHeight + "px");
-innerBtn.style("height", btnHeight + "px");
-vitalBtn.style("height", btnHeight + "px");
+  outerBtn.style("height", btnHeight + "px");
+  innerBtn.style("height", btnHeight + "px");
+  vitalBtn.style("height", btnHeight + "px");
 
-// center text inside buttons
-outerBtn.style("text-align", "center");
-innerBtn.style("text-align", "center");
-vitalBtn.style("text-align", "center");
+  // Center text inside buttons (horizontally and vertically)
+  outerBtn.style("text-align", "center");
+  innerBtn.style("text-align", "center");
+  vitalBtn.style("text-align", "center");
 
-// center text vertically
-outerBtn.style("line-height", btnHeight + "px");
-innerBtn.style("line-height", btnHeight + "px");
-vitalBtn.style("line-height", btnHeight + "px");
+  outerBtn.style("line-height", btnHeight + "px");
+  innerBtn.style("line-height", btnHeight + "px");
+  vitalBtn.style("line-height", btnHeight + "px");
 
+  // Hide result buttons initially
   outerBtn.hide();
   innerBtn.hide();
   vitalBtn.hide();
@@ -83,6 +96,7 @@ vitalBtn.style("line-height", btnHeight + "px");
     page = 12;
   });
 
+  // Start button interaction
   startBtn.mousePressed(() => {
     startBtn.hide();
     page = 2; // change to instructions page
@@ -105,9 +119,11 @@ vitalBtn.style("line-height", btnHeight + "px");
   });
 }
 
+// Draw loop runs continuously
 function draw() {
   background("#F3EAE5");
 
+  // Page navigation system
   if (page === 1) {
     drawPage1();
   } else if (page === 2) {
@@ -142,19 +158,23 @@ function drawPage1() {
   rect(0, height - 100, width, 100);
 
   let headerY = 75;
-
+ 
+  // Title text
   textFont(brandFont2);
   textSize(30);
   fill("#796159");
   textAlign(CENTER, TOP);
   text("Radiance Quiz", width / 2, headerY);
 
+  // Main question text
   textFont(brandFont1);
   textSize(40);
   text("Which type of radiance are you?", width / 2, headerY + 100);
 
+  // Position start button
   startBtn.position(width / 2 - 115, headerY + 270);
 
+  // Footer branding
   let y = 600;
   let footerCenterX = width / 2 + 45;
 
@@ -175,7 +195,7 @@ function drawPage1() {
 function drawPage2() {
   background("#F3EAE5");
 
-  let yOffset = 60;
+  let yOffset = 60; // shift things vertically (up or down on the screen)
 
   fill("#796159");
   noStroke();
@@ -408,6 +428,7 @@ function drawPage11() {
 function drawPage12() {
   background("#F3EAE5");
 
+  // makes button invisible on page
   outerBtn.hide();
   innerBtn.hide();
   vitalBtn.hide();
@@ -455,12 +476,16 @@ function createCard(x, y, front, back) {
 // Click to flip
 function mousePressed() {
   for (let c of cards) {
+
+    // Check if the mouse is inside the card
     if (
-      mouseX > c.x &&
-      mouseX < c.x + c.w &&
-      mouseY > c.y &&
-      mouseY < c.y + c.h
+      mouseX > c.x && // to the right of the left side
+      mouseX < c.x + c.w && // to the left of the right side
+      mouseY > c.y && // below the top
+      mouseY < c.y + c.h // above the bottom
     ) {
+      // Flip the card
+      // (if it's front → show back, if back → show front)
       c.flipped = !c.flipped;
     }
   }
