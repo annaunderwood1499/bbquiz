@@ -214,7 +214,7 @@ function drawPage2() {
   textSize(24);
 
   text(
-    "Before you begin the quiz, grab a notebook and a pencil, this will be a key interactive element to help you engage with your results. As you navigate through the quiz, keep a running tally for each answer. Be sure to track each radiance type separately: Outer Glow, Inner Softness, and Vital Flow. At the end of the quiz, you’ll receive instructions on how to calculate your final result and discover your radiance type.",
+    "Before you begin the quiz, grab a notecard and a pencil, this will be a key interactive element to help you engage with your results. As you navigate through the quiz, keep a running tally for each answer. Be sure to track each radiance type separately: Outer Glow, Inner Softness, and Vital Flow. At the end of the quiz, you’ll receive instructions on how to calculate your final result and discover your radiance type.",
     400,
     350 + yOffset,
     680
