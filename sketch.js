@@ -17,6 +17,11 @@ let vitalBtn; // vital flow button
 // Page system
 let page = 1; // controls which page is being shown (page 1)
 
+// Controls whether the hint message (small message about space bar) is shown
+let hintMessage = "";
+let showHint = false;
+let hintTimer = 0;
+
 // load assets before sketch starts
 function preload() {
   brandFont1 = loadFont("Rosarivo-Regular.ttf");
@@ -153,6 +158,31 @@ function draw() {
   } else if (page === 12) {
    drawPage12();
 }
+
+// Hint system (right side of quiz area)
+if (showHint && page >= 3 && page <= 8) {
+
+  fill("#796159");
+  textFont(brandFont2);
+  textSize(16);
+  textAlign(LEFT, TOP);
+
+  // small paragraph box position (right side of screen)
+  text(
+  "Hey! Need to move on?\nPress the space bar to\ncontinue through the quiz.",
+  width - 280,  // pushes it to the right side
+  height - 200    // vertically centered area near cards/buttons
+  );
+
+  // Timer controls how long the message stays visible
+  hintTimer++;
+   
+  // Hide the hint after 3 second (180 frames at 60 fps)
+  if (hintTimer > 180) {
+  showHint = false; // turn message off
+  hintTimer = 0; // reset timer for next time
+  }
+}
 }
 
 // Page 1: Start page
@@ -247,6 +277,7 @@ for (let c of cards) {
 }
 }
 
+// Page 4: Quiz question 2
 function drawPage4() {
   background("#F3EAE5");
 
@@ -268,6 +299,7 @@ function drawPage4() {
   }
 }
 
+// Page 5: Quiz question 3
 function drawPage5() {
   background("#F3EAE5");
 
@@ -288,7 +320,7 @@ function drawPage5() {
     pop();
   }
 }
-
+// Page 6: Quiz question 4
 function drawPage6() {
   background("#F3EAE5");
 
@@ -310,6 +342,7 @@ function drawPage6() {
   }
 }
 
+// Page 7: Quiz question 5
 function drawPage7() {
   background("#F3EAE5");
 
@@ -331,6 +364,7 @@ function drawPage7() {
   }
 }
 
+// Page 8: Quiz question 6
 function drawPage8() {
   background("#F3EAE5");
 
@@ -608,17 +642,21 @@ function createCard(x, y, front, back) {
 
 // Click to flip
 function mousePressed() {
-  for (let c of cards) {
 
-    // Check if the mouse is inside the card
+  // show hint only on quiz pages 3–8
+  if (page >= 3 && page <= 8) {
+    hintMessage = "Hey! Need to move to the next page? Press the space bar to continue through the quiz!";
+    showHint = true;
+    hintTimer = 0;
+  }
+
+  for (let c of cards) {
     if (
-      mouseX > c.x && // to the right of the left side
-      mouseX < c.x + c.w && // to the left of the right side
-      mouseY > c.y && // below the top
-      mouseY < c.y + c.h // above the bottom
+      mouseX > c.x &&
+      mouseX < c.x + c.w &&
+      mouseY > c.y &&
+      mouseY < c.y + c.h
     ) {
-      // Flip the card
-      // (if it's front → show back, if back → show front)
       c.flipped = !c.flipped;
     }
   }
