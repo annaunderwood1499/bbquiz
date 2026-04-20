@@ -1,6 +1,7 @@
 // fonts and image assets
 let brandFont1; // Rosarivo
 let brandFont2; // Radley
+let brandFont2Italic; // Radley-Italic.ttf
 let ampImg; // BB_logo.png
 let stampImg; // Result page stamp (outer glow, inner softness, vital flow)
 
@@ -20,6 +21,7 @@ let page = 1; // controls which page is being shown (page 1)
 function preload() {
   brandFont1 = loadFont("Rosarivo-Regular.ttf");
   brandFont2 = loadFont("Radley-Regular.ttf");
+  brandFont2Italic = loadFont("Radley-Italic.ttf");
   ampImg = loadImage("BB_logo.png");
   stampImg = loadImage("BB_stamp.png");
 }
@@ -417,19 +419,46 @@ function drawPage10() {
   innerBtn.hide();
   vitalBtn.hide();
 
-  textAlign(CENTER, CENTER);
+ // Text
+  textAlign(LEFT, CENTER);
   textFont(brandFont1);
-  textSize(50);
-  fill("#796159");
+  textSize(40);
+  text("You are Outer Glow", 400, 100 + yOffset);
 
-  text("Outer Glow", width / 2, height / 2);
+  textFont(brandFont2Italic);
+  textSize(30);
+  text("Right now, your energy is shifting from just getting by to being fully present in your own skin.", 400, 175 + yOffset);
+
+  textFont(brandFont2);
+  textSize(24);
+  text(
+  "You’re realizing that the way you show up for yourself in the mirror sets the tone for how you show up in the world. This isn’t about meeting a standard; it’s about the quiet, tactile joy of self-adornment.",
+  400,
+  320 + yOffset,
+  630
+);
+
+  text(
+  "Your retreat focus: The meditative ritual of skincare, scents that match your mood, and wearing your someday pieces today.",
+  400,
+  470 + yOffset,
+  630
+);
+
+  textFont(brandFont2Italic);
+  text(
+  "You’re not performing: You’re practicing the art of being seen.",
+  400,
+  540 + yOffset,
+  630
+);
 }
 
 // Page 11: Inner Softness Results Page
 function drawPage11() {
   background("#F3EAE5");
 
-   let yOffset = 80;
+   let yOffset = 110; // shift things vertically (up and down the screen)
 
   // center it and let overflow get cut off
   imageMode(CENTER);
@@ -454,8 +483,7 @@ function drawPage11() {
   textSize(40);
   text("You are Inner Softness", 400, 100 + yOffset);
 
-  textFont(brandFont2);
-  textStyle(ITALIC);
+  textFont(brandFont2Italic);
   textSize(30);
   text("Right now your energy is asking for quiet restoration.", 400, 175 + yOffset);
 
@@ -463,11 +491,26 @@ function drawPage11() {
   textSize(24);
 
   text(
-    "Review your quiz answers and tally each radiance type separately: Outer Glow, Inner Softness, and Vital Flow. Once you’ve counted your totals, identify which type you selected most often. Finally, click on the radiance type with the highest tally to reveal your full results and learn more about your unique glow!",
-    400,
-    340 + yOffset,
-    620
-  );
+  "You’ve been holding a lot mentally, even if nothing dramatic is happening. There’s a quiet kind of weight you carry—subtle, but constant. When you slow down, you return to yourself quickly, like something in you has been waiting for that pause.",
+  400,
+  320 + yOffset,
+  630
+);
+
+  text(
+  "Your retreat focus: journaling, intentional moments of rest, and early nights that support deep restoration.",
+  400,
+  470 + yOffset,
+  630
+);
+
+  textFont(brandFont2Italic);
+  text(
+  "You’re not behind — you’re resetting",
+  400,
+  540 + yOffset,
+  630
+);
 }
 
 // Page 12: Vital Flow Results Page
@@ -491,12 +534,40 @@ function drawPage12() {
   innerBtn.hide();
   vitalBtn.hide();
 
-  textAlign(CENTER, CENTER);
+  // Text
+  textAlign(LEFT, CENTER);
   textFont(brandFont1);
-  textSize(50);
-  fill("#796159");
+  textSize(40);
+  text("You are Vital Flow", 400, 100 + yOffset);
 
-  text("Vital Flow", width / 2, height / 2);
+  textFont(brandFont2Italic);
+  textSize(30);
+  text("Right now, your energy is craving a deeper connection to your physical self.", 400, 175 + yOffset);
+
+  textFont(brandFont2);
+  textSize(24);
+
+  text(
+  "You need to listen to what your body actually needs rather than what it should do. You’re moving away from depletion and toward a state of high-quality replenishment.",
+  400,
+  320 + yOffset,
+  630
+);
+
+  text(
+  "Your retreat focus: movement that feels freeing, nourishing your body, and finding ease in effort.",
+  400,
+  470 + yOffset,
+  630
+);
+
+  textFont(brandFont2Italic);
+  text(
+  "You’re not just doing wellness: You’re cultivating your own vitality.",
+  400,
+  540 + yOffset,
+  630
+);
 }
 
 // Draw cards
