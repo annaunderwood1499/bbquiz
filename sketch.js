@@ -400,6 +400,8 @@ vitalBtn.position(width / 2 + gap - 130, y);
 function drawPage10() {
   background("#F3EAE5");
 
+  let yOffset = 110; // shift things vertically (up and down the screen)
+
   // center it and let overflow get cut off
   imageMode(CENTER);
 
@@ -427,29 +429,29 @@ function drawPage10() {
 
   textFont(brandFont2Italic);
   textSize(30);
-  text("Right now, your energy is shifting from just getting by to being fully present in your own skin.", 400, 175 + yOffset);
+  text("Right now your energy is shifting toward deeper presence.", 400, 175 + yOffset);
 
   textFont(brandFont2);
   textSize(24);
   text(
   "You’re realizing that the way you show up for yourself in the mirror sets the tone for how you show up in the world. This isn’t about meeting a standard; it’s about the quiet, tactile joy of self-adornment.",
   400,
-  320 + yOffset,
+  300 + yOffset,
   630
 );
 
   text(
   "Your retreat focus: The meditative ritual of skincare, scents that match your mood, and wearing your someday pieces today.",
   400,
-  470 + yOffset,
-  630
+  435 + yOffset,
+  680
 );
 
   textFont(brandFont2Italic);
   text(
   "You’re not performing: You’re practicing the art of being seen.",
   400,
-  540 + yOffset,
+  525 + yOffset,
   630
 );
 }
@@ -517,6 +519,8 @@ function drawPage11() {
 function drawPage12() {
   background("#F3EAE5");
 
+  let yOffset = 110; // shift things vertically (up and down the screen)
+
   // center it and let overflow get cut off
   imageMode(CENTER);
 
@@ -542,7 +546,7 @@ function drawPage12() {
 
   textFont(brandFont2Italic);
   textSize(30);
-  text("Right now, your energy is craving a deeper connection to your physical self.", 400, 175 + yOffset);
+  text("Right now your energy is craving physical connection.", 400, 175 + yOffset);
 
   textFont(brandFont2);
   textSize(24);
@@ -550,7 +554,7 @@ function drawPage12() {
   text(
   "You need to listen to what your body actually needs rather than what it should do. You’re moving away from depletion and toward a state of high-quality replenishment.",
   400,
-  320 + yOffset,
+  285 + yOffset,
   630
 );
 
