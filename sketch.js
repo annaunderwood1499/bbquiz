@@ -554,14 +554,14 @@ function drawPage12() {
   text(
   "You need to listen to what your body actually needs rather than what it should do. You’re moving away from depletion and toward a state of high-quality replenishment.",
   400,
-  285 + yOffset,
+  290 + yOffset,
   630
 );
 
   text(
   "Your retreat focus: movement that feels freeing, nourishing your body, and finding ease in effort.",
   400,
-  470 + yOffset,
+  415 + yOffset,
   630
 );
 
@@ -569,8 +569,8 @@ function drawPage12() {
   text(
   "You’re not just doing wellness: You’re cultivating your own vitality.",
   400,
-  540 + yOffset,
-  630
+  510 + yOffset,
+  700
 );
 }
 
