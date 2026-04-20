@@ -2,7 +2,7 @@
 let brandFont1; // Rosarivo
 let brandFont2; // Radley
 let ampImg; // BB_logo.png
-let stampImg = loadImage("BB_stamp.png"); // Result page stamp (outer glow, inner softness, vital flow)
+let stampImg; // Result page stamp (outer glow, inner softness, vital flow)
 
 // Quiz system
 let cards = []; // stores all quiz cards (answer choices)
@@ -21,6 +21,7 @@ function preload() {
   brandFont1 = loadFont("Rosarivo-Regular.ttf");
   brandFont2 = loadFont("Radley-Regular.ttf");
   ampImg = loadImage("BB_logo.png");
+  stampImg = loadImage("BB_stamp.png");
 }
 
 // Runs once at start
@@ -397,10 +398,21 @@ vitalBtn.position(width / 2 + gap - 130, y);
 function drawPage10() {
   background("#F3EAE5");
 
-   // Top stamp image
+  // center it and let overflow get cut off
+  imageMode(CENTER);
+
+  // draw full-width banner, centered
+  let h = 120; // your banner height
+  let scale = h / stampImg.height; // figure out how much we need to scale the image based on its original height
+  let newW = stampImg.width * scale; // adjust the width by the same scale so the image keeps its proportions (no stretching)
+
+  // draw the image centered at the top of the canvas with the new width and height
+  image(stampImg, width / 2, h / 2, newW, h); 
+
+ // Top stamp image
   imageMode(CORNER);
   image(stampImg, 0, 0, width, 120);
-
+  
   outerBtn.hide();
   innerBtn.hide();
   vitalBtn.hide();
@@ -417,29 +429,62 @@ function drawPage10() {
 function drawPage11() {
   background("#F3EAE5");
 
-   // Top stamp image
-  imageMode(CORNER);
-  image(stampImg, 0, 0, width, 120);
+   let yOffset = 80;
 
+  // center it and let overflow get cut off
+  imageMode(CENTER);
+
+  // draw full-width banner, centered
+  let h = 120; // your banner height
+  let scale = h / stampImg.height; // figure out how much we need to scale the image based on its original height
+  let newW = stampImg.width * scale; // adjust the width by the same scale so the image keeps its proportions (no stretching)
+
+  // draw the image centered at the top of the canvas with the new width and height
+  image(stampImg, width / 2, h / 2, newW, h); 
+
+
+  // makes button invisible on page
   outerBtn.hide();
   innerBtn.hide();
   vitalBtn.hide();
 
-  textAlign(CENTER, CENTER);
+  // Text
+  textAlign(LEFT, CENTER);
   textFont(brandFont1);
-  textSize(50);
-  fill("#796159");
+  textSize(40);
+  text("You are Inner Softness", 400, 100 + yOffset);
 
-  text("Inner Softness", width / 2, height / 2);
+  textFont(brandFont2);
+  textStyle(ITALIC);
+  textSize(30);
+  text("Right now your energy is asking for quiet restoration.", 400, 175 + yOffset);
+
+  textFont(brandFont2);
+  textSize(24);
+
+  text(
+    "Review your quiz answers and tally each radiance type separately: Outer Glow, Inner Softness, and Vital Flow. Once you’ve counted your totals, identify which type you selected most often. Finally, click on the radiance type with the highest tally to reveal your full results and learn more about your unique glow!",
+    400,
+    340 + yOffset,
+    620
+  );
 }
 
 // Page 12: Vital Flow Results Page
 function drawPage12() {
   background("#F3EAE5");
 
-   // Top stamp image
-  imageMode(CORNER);
-  image(stampImg, 0, 0, width, 120);
+  // center it and let overflow get cut off
+  imageMode(CENTER);
+
+  // draw full-width banner, centered
+  let h = 120; // your banner height
+  let scale = h / stampImg.height; // figure out how much we need to scale the image based on its original height
+  let newW = stampImg.width * scale; // adjust the width by the same scale so the image keeps its proportions (no stretching)
+
+  // draw the image centered at the top of the canvas with the new width and height
+  image(stampImg, width / 2, h / 2, newW, h); 
+
 
   // makes button invisible on page
   outerBtn.hide();
