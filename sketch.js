@@ -2,6 +2,7 @@
 let brandFont1; // Rosarivo
 let brandFont2; // Radley
 let ampImg; // BB_logo.png
+let stampImg = loadImage("BB_stamp.png"); // Result page stamp (outer glow, inner softness, vital flow)
 
 // Quiz system
 let cards = []; // stores all quiz cards (answer choices)
@@ -214,7 +215,7 @@ function drawPage2() {
   textSize(24);
 
   text(
-    "Before you begin the quiz, grab a notecard and a pencil, this will be a key interactive element to help you engage with your results. As you navigate through the quiz, keep a running tally for each answer. Be sure to track each radiance type separately: Outer Glow, Inner Softness, and Vital Flow. At the end of the quiz, you’ll receive instructions on how to calculate your final result and discover your radiance type.",
+    "Before you begin the quiz, grab a notecard and a pencil, this will be a key interactive element to help you engage with your results. As you navigate through the quiz, keep a running tally for each answer. Be sure to track each radiance type separately: Outer Glow, Inner Softness, and Vital Flow. Unless a page includes buttons or specific navigation instructions, press the space bar to move to the next page for the remainder of the quiz. At the end of the quiz, you’ll receive instructions on how to calculate your final result and discover your radiance type.",
     400,
     350 + yOffset,
     680
@@ -396,6 +397,10 @@ vitalBtn.position(width / 2 + gap - 130, y);
 function drawPage10() {
   background("#F3EAE5");
 
+   // Top stamp image
+  imageMode(CORNER);
+  image(stampImg, 0, 0, width, 120);
+
   outerBtn.hide();
   innerBtn.hide();
   vitalBtn.hide();
@@ -412,6 +417,10 @@ function drawPage10() {
 function drawPage11() {
   background("#F3EAE5");
 
+   // Top stamp image
+  imageMode(CORNER);
+  image(stampImg, 0, 0, width, 120);
+
   outerBtn.hide();
   innerBtn.hide();
   vitalBtn.hide();
@@ -427,6 +436,10 @@ function drawPage11() {
 // Page 12: Vital Flow Results Page
 function drawPage12() {
   background("#F3EAE5");
+
+   // Top stamp image
+  imageMode(CORNER);
+  image(stampImg, 0, 0, width, 120);
 
   // makes button invisible on page
   outerBtn.hide();
