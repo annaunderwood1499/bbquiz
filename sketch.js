@@ -33,7 +33,9 @@ function preload() {
 
 // Runs once at start
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  let cnv = createCanvas(windowWidth, windowHeight);
+  cnv.position(0, 0);
+  cnv.style("display", "block");
 
   // Start Quiz Button
   startBtn = createButton("Start Quiz");
@@ -171,7 +173,7 @@ if (showHint && page >= 3 && page <= 8) {
   text(
   "Hey! Need to move on?\nPress the space bar to\ncontinue through the quiz.",
   width - 280,  // pushes it to the right side
-  height - 200    // vertically centered area near cards/buttons
+  height - 550   // vertically centered area near cards/buttons
   );
 
   // Timer controls how long the message stays visible
@@ -250,7 +252,7 @@ function drawPage2() {
   text(
     "Before you begin the quiz, grab a notecard and a pencil, this will be a key interactive element to help you engage with your results. As you navigate through the quiz, keep a running tally for each answer. Be sure to track each radiance type separately: Outer Glow, Inner Softness, and Vital Flow. Unless a page includes buttons or specific navigation instructions, press the space bar to move to the next page for the remainder of the quiz. At the end of the quiz, you’ll receive instructions on how to calculate your final result and discover your radiance type.",
     400,
-    350 + yOffset,
+    380 + yOffset,
     680
   );
 }
@@ -434,7 +436,7 @@ vitalBtn.position(width / 2 + gap - 130, y);
 function drawPage10() {
   background("#F3EAE5");
 
-  let yOffset = 110; // shift things vertically (up and down the screen)
+  let yOffset = 135; // shift things vertically (up and down the screen)
 
   // center it and let overflow get cut off
   imageMode(CENTER);
@@ -494,7 +496,7 @@ function drawPage10() {
 function drawPage11() {
   background("#F3EAE5");
 
-   let yOffset = 110; // shift things vertically (up and down the screen)
+   let yOffset = 135; // shift things vertically (up and down the screen)
 
   // center it and let overflow get cut off
   imageMode(CENTER);
@@ -553,7 +555,7 @@ function drawPage11() {
 function drawPage12() {
   background("#F3EAE5");
 
-  let yOffset = 110; // shift things vertically (up and down the screen)
+  let yOffset = 135; // shift things vertically (up and down the screen)
 
   // center it and let overflow get cut off
   imageMode(CENTER);
