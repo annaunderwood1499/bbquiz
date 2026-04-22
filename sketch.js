@@ -1,8 +1,8 @@
 // fonts and image assets
-let brandFont1; // Rosarivo
-let brandFont2; // Radley
-let brandFont2Italic; // Radley-Italic.ttf
-let ampImg; // BB_logo.png
+let brandFont1; // font for main headings (Rosarivo)
+let brandFont2; // font for body text (Radley)
+let brandFont2Italic; // italic version of Radley
+let ampImg; // BB_logo.png (logo image)
 let stampImg; // Result page stamp (outer glow, inner softness, vital flow)
 
 // Quiz system
@@ -18,29 +18,29 @@ let vitalBtn; // vital flow button
 let page = 1; // controls which page is being shown (page 1)
 
 // Controls whether the hint message (small message about space bar) is shown
-let hintMessage = "";
-let showHint = false;
-let hintTimer = 0;
+let hintMessage = ""; // text for hint
+let showHint = false; // whether hint is visible
+let hintTimer = 0; // timer to hide hint after time
 
-// load assets before sketch starts
+// preload runs before everything else → used to load assets
 function preload() {
-  brandFont1 = loadFont("Rosarivo-Regular.ttf");
-  brandFont2 = loadFont("Radley-Regular.ttf");
-  brandFont2Italic = loadFont("Radley-Italic.ttf");
-  ampImg = loadImage("BB_logo.png");
-  stampImg = loadImage("BB_stamp.png");
+  brandFont1 = loadFont("Rosarivo-Regular.ttf"); // load main font
+  brandFont2 = loadFont("Radley-Regular.ttf"); // load body font
+  brandFont2Italic = loadFont("Radley-Italic.ttf"); // load italic font
+  ampImg = loadImage("BB_logo.png"); // load logo image
+  stampImg = loadImage("BB_stamp.png"); // load stamp image
 }
 
-// Runs once at start
+// setup runs once when sketch starts
 function setup() {
-  let cnv = createCanvas(windowWidth, windowHeight);
-  cnv.position(0, 0);
-  cnv.style("display", "block");
+  let cnv = createCanvas(windowWidth, windowHeight); // full screen canvas
+  cnv.position(0, 0); // place canvas at top left
+  cnv.style("display", "block"); // remove default spacing
 
-  // Start Quiz Button
+  // Create Start Quiz Button
   startBtn = createButton("Start Quiz");
 
-  // Start Quiz Button styling
+  // Style Start Quiz Button 
   startBtn.style("background-color", "#DDBDB6");
   startBtn.style("color", "#78615A");
   startBtn.style("font-family", "Radley");
@@ -49,12 +49,12 @@ function setup() {
   startBtn.style("border-radius", "30px");
   startBtn.style("padding", "24px 39px");
 
-  // Result buttons
+  // Create Result buttons
   outerBtn = createButton("Outer Glow");
   innerBtn = createButton("Inner Softness");
   vitalBtn = createButton("Vital Flow");
 
-  // Reusable function to style result buttons
+  // function to style all result buttons the same way
   function styleResultButton(btn) {
     btn.style("background-color", "#DDBDB6");
     btn.style("color", "#78615A");
@@ -64,16 +64,15 @@ function setup() {
     btn.style("border-radius", "25px");
   }
 
-  // style result buttons
+  // apply style to all result buttons
   styleResultButton(outerBtn);
   styleResultButton(innerBtn);
   styleResultButton(vitalBtn);
 
-  // make all buttons same size
+  // set same size for all result buttons
   let btnWidth = 260;
   let btnHeight = 80;
 
-  // make all buttons equal size
   outerBtn.style("width", btnWidth + "px");
   innerBtn.style("width", btnWidth + "px");
   vitalBtn.style("width", btnWidth + "px");
@@ -96,7 +95,7 @@ function setup() {
   innerBtn.hide();
   vitalBtn.hide();
 
-  // Result Button Interactions 
+  // button click → go to result pages 
   outerBtn.mousePressed(() => {
     page = 10;
   });
@@ -109,10 +108,10 @@ function setup() {
 
   // Start button interaction
   startBtn.mousePressed(() => {
-    startBtn.hide();
+    startBtn.hide(); // hide button
     page = 2; // change to instructions page
 
-    // Card setup 
+  // create first set of cards
     cards = [
       createCard(270, 200,
         "The personalized beauty boutique",
@@ -134,7 +133,7 @@ function setup() {
 function draw() {
   background("#F3EAE5");
 
-  // Page navigation system
+  // page navigation (decides what to draw)
   if (page === 1) {
     drawPage1();
   } else if (page === 2) {
@@ -161,7 +160,7 @@ function draw() {
    drawPage12();
 }
 
-// Hint system (right side of quiz area)
+// hint message (only shows on quiz pages)
 if (showHint && page >= 3 && page <= 8) {
 
   fill("#796159");
@@ -629,16 +628,16 @@ function drawCard(c) {
   pop();
 }
 
-// Create card
+// creates a card object
 function createCard(x, y, front, back) {
   return {
-    x,
-    y,
-    w: 816,
-    h: 125,
-    flipped: false,
-    front,
-    back
+    x, // x position
+    y, // y position
+    w: 816, // width
+    h: 125, // height
+    flipped: false, // whether card is flipped
+    front, // front text
+    back // back text
   };
 }
 
@@ -652,14 +651,16 @@ function mousePressed() {
     hintTimer = 0;
   }
 
+  // loop through every card in the cards array
   for (let c of cards) {
-    if (
-      mouseX > c.x &&
-      mouseX < c.x + c.w &&
-      mouseY > c.y &&
-      mouseY < c.y + c.h
+    if (  // check if the mouse is inside the card area (left edge)
+      mouseX > c.x && // mouse is to the right of the card's left side
+      mouseX < c.x + c.w && // mouse is to the left of the card's right side
+      mouseY > c.y && // mouse is below the card's top edge
+      mouseY < c.y + c.h // mouse is above the card's bottom edge
     ) {
-      c.flipped = !c.flipped;
+      // if mouse is inside the card, flip its state
+      c.flipped = !c.flipped; // toggles between true and false
     }
   }
 }
@@ -795,11 +796,13 @@ function keyPressed() {
   }
 }
 
-// Resize
+// runs whenever the browser window is resized
 function windowResized() {
+  // resize the canvas to always match the new window size
   resizeCanvas(windowWidth, windowHeight);
-
+   // check if the start button exists
   if (startBtn) {
+    // reposition the start button so it stays centered on screen
     startBtn.position(width / 2 - 115, 95 + 245);
   }
 }
